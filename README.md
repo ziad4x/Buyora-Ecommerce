@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+## Live Demo
+
+Check out the live version here:  
+🌐 [Buyora E-commerce](https://buyora-ecommerce.netlify.app)
+
 First, run the development server:
 
 ```bash
