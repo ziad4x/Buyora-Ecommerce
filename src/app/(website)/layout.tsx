@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   title: "Buyora - E-commerce",
   description: "An e-commerce website built with Next.js and Tailwind CSS",
   icons: {
-    icon: "/icons/online-shop.png"
-  }
+    icon: "/assets/icons/online-shop.png",
+    apple: "/assets/icons/online-shop.png",
+  },
 };
 
 export default function WebsiteLayout({
@@ -20,6 +21,10 @@ export default function WebsiteLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning >
+      <head>
+        <link rel="icon" href="/assets/icons/online-shop.png" />
+        <link rel="apple-touch-icon" href="/assets/icons/online-shop.png" />
+      </head>
       <body className="min-h-screen flex flex-col overflow-x-hidden">
         <Providers>
           <Navbar />
