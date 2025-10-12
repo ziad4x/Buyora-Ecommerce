@@ -4,10 +4,10 @@ import ProductCard from '@/components/productCard';
 import Pagination from '@/components/pagination';
 import CardSkeleton from '@/components/cardSkeleton';
 import { Product } from '@/interfaces';
-
+type Category = { slug: string; name: string; url: string };
 const ProductsPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string>('All Products');
   const [page, setPage] = useState(1);
   const [limit] = useState(10);
@@ -22,6 +22,7 @@ const ProductsPage = () => {
     };
     fetchCategories();
   }, []);
+
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -47,7 +48,7 @@ const ProductsPage = () => {
 
     fetchProducts();
     return () => abortController.abort();
-  }, [selectedCategories, page]);
+  }, [selectedCategories, page, limit]);
 
   const totalPages = Math.ceil(totalItems / limit);
 
@@ -56,14 +57,14 @@ const ProductsPage = () => {
     setPage(1);
   };
 
-  const categoriesWithAll = ['All Products', ...categories];
+  const categoriesWithAll = [{ name: 'All Products', slug: 'all' }, ...categories];
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setPage(newPage);
     }
   };
-
+  console.log({ categoriesWithAll })
   return (
     <section className="dark:bg-bg-dark dark:text-white bg-bg-pri min-h-screen text-black px-sm md:px-md lg:px-lg xl:px-xl py-10 flex flex-col md:flex-row gap-10 md:gap-4 overflow-x-hidden w-screen">
       {/* Sidebar */}
@@ -74,8 +75,8 @@ const ProductsPage = () => {
             <li key={idx} className="flex items-center gap-3 text-sm md:text-base">
               <input
                 type="radio"
-                checked={selectedCategories === category}
-                onChange={() => handleCategoryChange(category)}
+                checked={selectedCategories === category?.name}
+                onChange={() => handleCategoryChange(category?.name)}
                 className="accent-primary cursor-pointer"
                 id={`cat-${idx}`}
               />
@@ -83,7 +84,7 @@ const ProductsPage = () => {
                 htmlFor={`cat-${idx}`}
                 className="capitalize cursor-pointer hover:text-primary transition duration-300"
               >
-                {category}
+                {category?.name}
               </label>
             </li>
           ))}

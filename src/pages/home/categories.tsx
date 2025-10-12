@@ -16,12 +16,12 @@ const Categories = async () => {
                     Our Categories
                 </h2>
 
-                <Link
+                {/* <Link
                     href="/categories"
                     className="text-blue-500 hover:text-blue-600 hover:underline transition duration-300 font-medium"
                 >
                     See All Categories →
-                </Link>
+                </Link> */}
             </div>
 
             {/* شبكة التصنيفات */}
