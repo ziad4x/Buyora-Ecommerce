@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Buyora - E-commerce",
   description: "An e-commerce website built with Next.js and Tailwind CSS",
   icons: {
-    icon: "icons/online-shop.png"
+    icon: "/icons/online-shop.png"
   }
 };
 
