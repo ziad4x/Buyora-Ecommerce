@@ -25,30 +25,39 @@ const Products = () => {
     return (
         <section className='w-full p-sm md:p-md lg:p-lg xl:p-xl flex flex-col items-center justify-center gap-10'>
             <div className='w-full relative'>
-                <h2 className='text-3xl md:text-4xl font-bold text-center'>Our Latest Products</h2>
-                <p className='text-gray-500 text-center mt-2'>Explore our wide range of products</p>
-                <div className='absolute top-3 end-0 flex justify-end ms-auto w-full text-primary'>
+                <h2 className='text-3xl md:text-4xl font-bold text-center'>
+                    Our Latest Products
+                </h2>
+                <p className='text-gray-500 text-center mt-2'>
+                    Explore our wide range of products
+                </p>
+
+                {/* 👇 هنا التعديل */}
+                <div className='mt-4 flex justify-center md:justify-end w-full text-primary'>
                     <Link
                         href='/products'
                         className='text-blue-500 hover:text-blue-600 hover:underline transition duration-300 font-medium'
                     >
-                        <h3>See All Products <span>→</span></h3>
+                        <h3>
+                            See All Products <span>→</span>
+                        </h3>
                     </Link>
                 </div>
             </div>
 
-            {/* ✅ نلف الكومبوننت الفرعي بـ Suspense */}
-            <Suspense fallback={
-                <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6'>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <CardSkeleton key={i} />
-                    ))}
-                </div>
-            }>
-
+            <Suspense
+                fallback={
+                    <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6'>
+                        {Array.from({ length: 5 }).map((_, i) => (
+                            <CardSkeleton key={i} />
+                        ))}
+                    </div>
+                }
+            >
                 <ProductList />
             </Suspense>
         </section>
+
     );
 };
 

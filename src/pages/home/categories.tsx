@@ -49,7 +49,7 @@ const Categories = async () => {
                             </p>
 
                             {/* سهم أنيميشن */}
-                            <span className="absolute bottom-4 start-4 text-blue-400 text-2xl group-hover:translate-x-2 transition-transform duration-300">
+                            <span className="absolute bottom-4 start-1 sm:start-4 text-blue-400 text-2xl group-hover:translate-x-2 transition-transform duration-300">
                                 →
                             </span>
                         </div>

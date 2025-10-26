@@ -32,15 +32,15 @@ const CheckoutPage = () => {
     );
 
     return (
-        <div className="w-full min-h-screen p-sm md:p-md lg:p-lg xl:p-xl flex flex-col gap-8 lg:flex-row items-start bg-bg-pri dark:bg-bg-dark text-black dark:text-white">
+        <div className="w-full min-h-screen px-3 py-sm sm:p-sm md:p-md lg:p-lg xl:p-xl flex flex-col gap-8 lg:flex-row items-start bg-bg-pri dark:bg-bg-dark text-black dark:text-white">
             {/* Left - Cart Summary */}
-            <div className="w-full lg:w-2/3 flex flex-col gap-6 bg-white dark:bg-bg-dark/40 rounded-2xl border border-gray-400/30 shadow-lg p-6 transition-all">
+            <div className="w-full lg:w-2/3 flex flex-col gap-6 bg-white dark:bg-bg-dark/40 rounded-2xl border border-gray-400/30 shadow-lg p-2 py-5 sm:p-6 transition-all">
                 <h2 className="text-3xl font-bold border-b pb-3">Your Cart</h2>
 
                 {cart.length === 0 ? (
                     <p className="text-gray-500 text-center py-10">Your cart is empty</p>
                 ) : (
-                    <div className="flex flex-col gap-4 max-h-[70vh] overflow-y-auto custom-scroll lg:p-5 p-5 ">
+                    <div className="flex flex-col gap-4 max-h-[70vh] overflow-y-auto custom-scroll lg:p-5 py-2 sm:px-2 px-2 ">
                         {cart.map((item) => {
                             const discountPrice = item.discountPercentage && item.discountPercentage > 0 && (
                                 item.price - (item.price * item.discountPercentage) / 100
@@ -55,10 +55,10 @@ const CheckoutPage = () => {
                                     <div className="flex-1 flex flex-col ">
                                         <h3 className="font-semibold lg:text-lg hidden lg:block">{item.title}</h3>
                                         <h3 className="font-semibold block lg:hidden ">
-                                            {item.title.split(" ").slice(0, 1).join(" ").length > 7
-                                                ? item.title.split(" ").slice(0, 1).join(" ").slice(0, 7) + "..."
-                                                : item.title.length > 15
-                                                    ? item.title.slice(0, 14) + "..."
+                                            {item.title.split(" ").slice(0, 1).join(" ").length > 5
+                                                ? item.title.split(" ").slice(0, 1).join(" ").slice(0, 5) + "..."
+                                                : item.title.length > 10
+                                                    ? item.title.slice(0, 10) + "..."
                                                     : item.title}
                                         </h3>
                                         <p className="text-gray-500 text-sm">
@@ -67,7 +67,7 @@ const CheckoutPage = () => {
                                     </div>
 
                                     {/* Quantity Controls */}
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-1">
                                         <button
                                             onClick={() => decreaseQuantity?.(item.id)}
                                             className="lg:p-2 p-1 bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 rounded-lg"
